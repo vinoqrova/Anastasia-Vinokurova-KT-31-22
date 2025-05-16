@@ -8,8 +8,8 @@ namespace Anastasia_Vinokurova_KT_31_22.Controllers
     {
         private static readonly string[] Summaries = new[]
         {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
+            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching", "Хорошая погода" 
+        };
 
         private readonly ILogger<WeatherForecastController> _logger;
 
@@ -31,11 +31,11 @@ namespace Anastasia_Vinokurova_KT_31_22.Controllers
             .ToArray();
         }
         [HttpPost(Name = "AddNewSummary")]
-        public string[] AddNewSummary(string NewSummary)
+        public string[] AddNewSummary(string newSummary)
         {
             _logger.LogError("New method was called");
             var list = Summaries.ToList();
-            list.Add(NewSummary);
+            list.Add(newSummary);
             return list.ToArray();
         
         }
