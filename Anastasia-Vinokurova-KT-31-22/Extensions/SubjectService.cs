@@ -1,4 +1,4 @@
-// SubjectService.cs
+//SubjectService.cs
 using Microsoft.EntityFrameworkCore;
 using Anastasia_Vinokurova_KT_31_22.Databases;
 using Anastasia_Vinokurova_KT_31_22.Models;
