@@ -7,7 +7,7 @@ using System.Text.Json.Serialization;
 using Anastasia_Vinokurova_KT_31_22.Database;
 using Anastasia_Vinokurova_KT_31_22.Extensions;
 using Anastasia_Vinokurova_KT_31_22.Databases;
-//using Anastasia_Vinokurova_KT_31_22.Middlewares;
+using Anastasia_Vinokurova_KT_31_22.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 var logger = LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
@@ -45,7 +45,7 @@ try
         app.UseSwaggerUI();
     }
 
-  //  app.UseMiddleware<ExceptionHandlerMiddleware>();
+    app.UseMiddleware<ExceptionHandlerMiddleware>();
 
     app.UseAuthorization();
 
