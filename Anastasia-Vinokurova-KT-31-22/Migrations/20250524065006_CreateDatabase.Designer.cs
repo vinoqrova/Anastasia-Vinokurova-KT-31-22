@@ -24,82 +24,82 @@ namespace Anastasia_Vinokurova_KT_31_22.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Anastasia_Vinokurova_KT_31_22.Models.Cafedra", b =>
+            modelBuilder.Entity("Anastasia_Vinokurova_KT_31_22.Models.faculty", b =>
                 {
-                    b.Property<int>("CafedraId")
+                    b.Property<int>("facultyId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("Id")
                         .HasComment("Идентификатор кафедры");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CafedraId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("facultyId"));
 
                     b.Property<int>("AdminId")
                         .HasColumnType("int")
                         .HasColumnName("c_admin_id")
                         .HasComment("Идентификатор администратора(заведующего) кафедры");
 
-                    b.Property<string>("CafedraName")
+                    b.Property<string>("facultyName")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("varchar")
-                        .HasColumnName("c_cafedra_name")
+                        .HasColumnName("c_faculty_name")
                         .HasComment("Название кафедры");
 
-                    b.HasKey("CafedraId")
-                        .HasName("pk_Cafedra_Id");
+                    b.HasKey("facultyId")
+                        .HasName("pk_faculty_Id");
 
                     b.HasIndex("AdminId");
 
-                    b.HasIndex(new[] { "CafedraId" }, "idx_Cafedra_fk_admin_id_prepod_id");
+                    b.HasIndex(new[] { "facultyId" }, "idx_faculty_fk_admin_id_prepod_id");
 
-                    b.ToTable("Cafedra", (string)null);
+                    b.ToTable("faculty", (string)null);
                 });
 
-            modelBuilder.Entity("Anastasia_Vinokurova_KT_31_22.Models.Degree", b =>
+            modelBuilder.Entity("Anastasia_Vinokurova_KT_31_22.Models.Academic_degree", b =>
                 {
-                    b.Property<int>("DegreeId")
+                    b.Property<int>("Academic_degreeId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("c_degree_id")
+                        .HasColumnName("c_Academic_degree_id")
                         .HasComment("Bltynbabrfnjh cntgtyb");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DegreeId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Academic_degreeId"));
 
-                    b.Property<string>("DegreeName")
+                    b.Property<string>("Academic_degreeName")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("varchar")
-                        .HasColumnName("c_degree_name")
+                        .HasColumnName("c_Academic_degree_name")
                         .HasComment("Название степени (например, кандидат наук)");
 
-                    b.HasKey("DegreeId")
-                        .HasName("pk_Degree_degree_id");
+                    b.HasKey("Academic_degreeId")
+                        .HasName("pk_Academic_degree_Academic_degree_id");
 
-                    b.ToTable("Degree");
+                    b.ToTable("Academic_degree");
                 });
 
-            modelBuilder.Entity("Anastasia_Vinokurova_KT_31_22.Models.Position", b =>
+            modelBuilder.Entity("Anastasia_Vinokurova_KT_31_22.Models.Тitle", b =>
                 {
-                    b.Property<int>("PositionId")
+                    b.Property<int>("ТitleId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("position_id")
+                        .HasColumnName("Тitle_id")
                         .HasComment("Идентификатор должности");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PositionId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ТitleId"));
 
-                    b.Property<string>("PositionName")
+                    b.Property<string>("ТitleName")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("varchar")
-                        .HasColumnName("c_position_name")
+                        .HasColumnName("c_Тitle_name")
                         .HasComment("Название должности (например, доцент)");
 
-                    b.HasKey("PositionId")
-                        .HasName("pk_Position_position_id");
+                    b.HasKey("ТitleId")
+                        .HasName("pk_Тitle_Тitle_id");
 
-                    b.ToTable("Position");
+                    b.ToTable("Тitle");
                 });
 
             modelBuilder.Entity("Anastasia_Vinokurova_KT_31_22.Models.Prepod", b =>
@@ -112,14 +112,14 @@ namespace Anastasia_Vinokurova_KT_31_22.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PrepodId"));
 
-                    b.Property<int>("CafedraId")
+                    b.Property<int>("facultyId")
                         .HasColumnType("int")
-                        .HasColumnName("c_cafedra_id")
+                        .HasColumnName("c_faculty_id")
                         .HasComment("Айди кафедры");
 
-                    b.Property<int>("DegreeId")
+                    b.Property<int>("Academic_degreeId")
                         .HasColumnType("int")
-                        .HasColumnName("c_degree_id")
+                        .HasColumnName("c_Academic_degree_id")
                         .HasComment("Степень(учёная) преподавателя");
 
                     b.Property<string>("FirstName")
@@ -143,19 +143,19 @@ namespace Anastasia_Vinokurova_KT_31_22.Migrations
                         .HasColumnName("c_prepod_midname")
                         .HasComment("Отчество препода");
 
-                    b.Property<int>("PositionId")
+                    b.Property<int>("ТitleId")
                         .HasColumnType("int")
-                        .HasColumnName("c_position_id")
+                        .HasColumnName("c_Тitle_id")
                         .HasComment("Должность преподавателя");
 
                     b.HasKey("PrepodId")
                         .HasName("pk_Prepod_prepod_id");
 
-                    b.HasIndex(new[] { "DegreeId" }, "idx_Prepod_fk_degree_id");
+                    b.HasIndex(new[] { "Academic_degreeId" }, "idx_Prepod_fk_Academic_degree_id");
 
-                    b.HasIndex(new[] { "CafedraId" }, "idx_Prepod_fk_f_group_id");
+                    b.HasIndex(new[] { "facultyId" }, "idx_Prepod_fk_f_group_id");
 
-                    b.HasIndex(new[] { "PositionId" }, "idx_Prepod_fk_position_id");
+                    b.HasIndex(new[] { "ТitleId" }, "idx_Prepod_fk_Тitle_id");
 
                     b.ToTable("Prepod", (string)null);
                 });
@@ -230,7 +230,7 @@ namespace Anastasia_Vinokurova_KT_31_22.Migrations
                     b.ToTable("Subject", (string)null);
                 });
 
-            modelBuilder.Entity("Anastasia_Vinokurova_KT_31_22.Models.Cafedra", b =>
+            modelBuilder.Entity("Anastasia_Vinokurova_KT_31_22.Models.faculty", b =>
                 {
                     b.HasOne("Anastasia_Vinokurova_KT_31_22.Models.Prepod", "Admin")
                         .WithMany()
@@ -244,32 +244,32 @@ namespace Anastasia_Vinokurova_KT_31_22.Migrations
 
             modelBuilder.Entity("Anastasia_Vinokurova_KT_31_22.Models.Prepod", b =>
                 {
-                    b.HasOne("Anastasia_Vinokurova_KT_31_22.Models.Cafedra", "Cafedra")
+                    b.HasOne("Anastasia_Vinokurova_KT_31_22.Models.faculty", "faculty")
                         .WithMany()
-                        .HasForeignKey("CafedraId")
+                        .HasForeignKey("facultyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_f_group_id");
 
-                    b.HasOne("Anastasia_Vinokurova_KT_31_22.Models.Degree", "Degree")
+                    b.HasOne("Anastasia_Vinokurova_KT_31_22.Models.Academic_degree", "Academic_degree")
                         .WithMany()
-                        .HasForeignKey("DegreeId")
+                        .HasForeignKey("Academic_degreeId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
-                        .HasConstraintName("fk_degree_id");
+                        .HasConstraintName("fk_Academic_degree_id");
 
-                    b.HasOne("Anastasia_Vinokurova_KT_31_22.Models.Position", "Position")
+                    b.HasOne("Anastasia_Vinokurova_KT_31_22.Models.Тitle", "Тitle")
                         .WithMany()
-                        .HasForeignKey("PositionId")
+                        .HasForeignKey("ТitleId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
-                        .HasConstraintName("fk_position_id");
+                        .HasConstraintName("fk_Тitle_id");
 
-                    b.Navigation("Cafedra");
+                    b.Navigation("faculty");
 
-                    b.Navigation("Degree");
+                    b.Navigation("Academic_degree");
 
-                    b.Navigation("Position");
+                    b.Navigation("Тitle");
                 });
 
             modelBuilder.Entity("Anastasia_Vinokurova_KT_31_22.Models.Schedule", b =>

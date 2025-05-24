@@ -5,23 +5,23 @@ using Anastasia_Vinokurova_KT_31_22.Models;
 
 namespace Anastasia_Vinokurova_KT_31_22.Database.Configurations
 {
-    public class CafedraConfiguration : IEntityTypeConfiguration<Cafedra>
+    public class facultyConfiguration : IEntityTypeConfiguration<faculty>
     {
-        private const string TableName = "Cafedra";
+        private const string TableName = "faculty";
 
-        public void Configure(EntityTypeBuilder<Cafedra> builder)
+        public void Configure(EntityTypeBuilder<faculty> builder)
         {
             builder.ToTable(TableName);
-            builder.HasKey(c => c.CafedraId).HasName($"pk_{TableName}_Id");
+            builder.HasKey(c => c.facultyId).HasName($"pk_{TableName}_Id");
 
-            builder.Property(c => c.CafedraId)
+            builder.Property(c => c.facultyId)
                 .ValueGeneratedOnAdd()
                 .HasColumnName("Id")
                 .HasComment("Идентификатор кафедры");
 
-            builder.Property(c => c.CafedraName)
+            builder.Property(c => c.facultyName)
                 .IsRequired()
-                .HasColumnName("c_cafedra_name")
+                .HasColumnName("c_faculty_name")
                 .HasColumnType(ColumnType.String).HasMaxLength(100)
                 .HasComment("Название кафедры");
 
@@ -34,7 +34,7 @@ namespace Anastasia_Vinokurova_KT_31_22.Database.Configurations
 
 /*            builder.ToTable(TableName).HasOne(c => c.Admin)
                 .WithOne()
-                .HasForeignKey<Cafedra>(c => c.AdminId)
+                .HasForeignKey<faculty>(c => c.AdminId)
                 .HasConstraintName("fk_admin_id_prepod_id")
                 .OnDelete(DeleteBehavior.Restrict);*/
 
@@ -45,7 +45,7 @@ namespace Anastasia_Vinokurova_KT_31_22.Database.Configurations
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder.ToTable(TableName)
-                .HasIndex(p => p.CafedraId, $"idx_{TableName}_fk_admin_id_prepod_id");
+                .HasIndex(p => p.facultyId, $"idx_{TableName}_fk_admin_id_prepod_id");
         }
     }
 }

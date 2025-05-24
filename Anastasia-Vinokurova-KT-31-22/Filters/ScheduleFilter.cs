@@ -4,7 +4,7 @@
     {
         public int PrepodId { get; set; } = 0;
 
-        public int CafedraId { get; set; } = 0;
+        public int facultyId { get; set; } = 0;
 
         public int SubjectId { get; set; } = 0;
     }

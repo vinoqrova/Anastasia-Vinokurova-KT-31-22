@@ -11,29 +11,29 @@ namespace Anastasia_Vinokurova_KT_31_22.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Degree",
+                name: "Academic_degree",
                 columns: table => new
                 {
-                    c_degree_id = table.Column<int>(type: "int", nullable: false, comment: "Bltynbabrfnjh cntgtyb")
+                    c_Academic_degree_id = table.Column<int>(type: "int", nullable: false, comment: "Bltynbabrfnjh cntgtyb")
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    c_degree_name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false, comment: "Название степени (например, кандидат наук)")
+                    c_Academic_degree_name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false, comment: "Название степени (например, кандидат наук)")
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("pk_Degree_degree_id", x => x.c_degree_id);
+                    table.PrimaryKey("pk_Academic_degree_Academic_degree_id", x => x.c_Academic_degree_id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Position",
+                name: "Тitle",
                 columns: table => new
                 {
-                    position_id = table.Column<int>(type: "int", nullable: false, comment: "Идентификатор должности")
+                    Тitle_id = table.Column<int>(type: "int", nullable: false, comment: "Идентификатор должности")
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    c_position_name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false, comment: "Название должности (например, доцент)")
+                    c_Тitle_name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false, comment: "Название должности (например, доцент)")
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("pk_Position_position_id", x => x.position_id);
+                    table.PrimaryKey("pk_Тitle_Тitle_id", x => x.Тitle_id);
                 });
 
             migrationBuilder.CreateTable(
@@ -51,17 +51,17 @@ namespace Anastasia_Vinokurova_KT_31_22.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Cafedra",
+                name: "faculty",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false, comment: "Идентификатор кафедры")
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    c_cafedra_name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false, comment: "Название кафедры"),
+                    c_faculty_name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false, comment: "Название кафедры"),
                     c_admin_id = table.Column<int>(type: "int", nullable: false, comment: "Идентификатор администратора(заведующего) кафедры")
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("pk_Cafedra_Id", x => x.Id);
+                    table.PrimaryKey("pk_faculty_Id", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -73,30 +73,30 @@ namespace Anastasia_Vinokurova_KT_31_22.Migrations
                     c_prepod_firstname = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false, comment: "Имя препода"),
                     c_prepod_lastname = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false, comment: "Фамилия препода"),
                     c_prepod_midname = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false, comment: "Отчество препода"),
-                    c_degree_id = table.Column<int>(type: "int", nullable: false, comment: "Степень(учёная) преподавателя"),
-                    c_position_id = table.Column<int>(type: "int", nullable: false, comment: "Должность преподавателя"),
-                    c_cafedra_id = table.Column<int>(type: "int", nullable: false, comment: "Айди кафедры")
+                    c_Academic_degree_id = table.Column<int>(type: "int", nullable: false, comment: "Степень(учёная) преподавателя"),
+                    c_Тitle_id = table.Column<int>(type: "int", nullable: false, comment: "Должность преподавателя"),
+                    c_faculty_id = table.Column<int>(type: "int", nullable: false, comment: "Айди кафедры")
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("pk_Prepod_prepod_id", x => x.prepod_id);
                     table.ForeignKey(
-                        name: "fk_degree_id",
-                        column: x => x.c_degree_id,
-                        principalTable: "Degree",
-                        principalColumn: "c_degree_id",
+                        name: "fk_Academic_degree_id",
+                        column: x => x.c_Academic_degree_id,
+                        principalTable: "Academic_degree",
+                        principalColumn: "c_Academic_degree_id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "fk_f_group_id",
-                        column: x => x.c_cafedra_id,
-                        principalTable: "Cafedra",
+                        column: x => x.c_faculty_id,
+                        principalTable: "faculty",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "fk_position_id",
-                        column: x => x.c_position_id,
-                        principalTable: "Position",
-                        principalColumn: "position_id",
+                        name: "fk_Тitle_id",
+                        column: x => x.c_Тitle_id,
+                        principalTable: "Тitle",
+                        principalColumn: "Тitle_id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -129,29 +129,29 @@ namespace Anastasia_Vinokurova_KT_31_22.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "idx_Cafedra_fk_admin_id_prepod_id",
-                table: "Cafedra",
+                name: "idx_faculty_fk_admin_id_prepod_id",
+                table: "faculty",
                 column: "Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Cafedra_c_admin_id",
-                table: "Cafedra",
+                name: "IX_faculty_c_admin_id",
+                table: "faculty",
                 column: "c_admin_id");
 
             migrationBuilder.CreateIndex(
-                name: "idx_Prepod_fk_degree_id",
+                name: "idx_Prepod_fk_Academic_degree_id",
                 table: "Prepod",
-                column: "c_degree_id");
+                column: "c_Academic_degree_id");
 
             migrationBuilder.CreateIndex(
                 name: "idx_Prepod_fk_f_group_id",
                 table: "Prepod",
-                column: "c_cafedra_id");
+                column: "c_faculty_id");
 
             migrationBuilder.CreateIndex(
-                name: "idx_Prepod_fk_position_id",
+                name: "idx_Prepod_fk_Тitle_id",
                 table: "Prepod",
-                column: "c_position_id");
+                column: "c_Тitle_id");
 
             migrationBuilder.CreateIndex(
                 name: "idx_Schedule_fk_prepod_id",
@@ -165,7 +165,7 @@ namespace Anastasia_Vinokurova_KT_31_22.Migrations
 
             migrationBuilder.AddForeignKey(
                 name: "fk_admin_id_prepod_id",
-                table: "Cafedra",
+                table: "faculty",
                 column: "c_admin_id",
                 principalTable: "Prepod",
                 principalColumn: "prepod_id",
@@ -177,7 +177,7 @@ namespace Anastasia_Vinokurova_KT_31_22.Migrations
         {
             migrationBuilder.DropForeignKey(
                 name: "fk_admin_id_prepod_id",
-                table: "Cafedra");
+                table: "faculty");
 
             migrationBuilder.DropTable(
                 name: "Schedule");
@@ -189,13 +189,13 @@ namespace Anastasia_Vinokurova_KT_31_22.Migrations
                 name: "Prepod");
 
             migrationBuilder.DropTable(
-                name: "Degree");
+                name: "Academic_degree");
 
             migrationBuilder.DropTable(
-                name: "Cafedra");
+                name: "faculty");
 
             migrationBuilder.DropTable(
-                name: "Position");
+                name: "Тitle");
         }
     }
 }

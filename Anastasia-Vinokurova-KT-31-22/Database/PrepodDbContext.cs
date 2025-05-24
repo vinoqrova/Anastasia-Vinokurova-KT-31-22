@@ -8,15 +8,15 @@ namespace Anastasia_Vinokurova_KT_31_22.Databases
     {
         DbSet<Prepod> Prepods { get; set; }
 
-        DbSet<Cafedra> Cafedri { get; set; }
+        DbSet<faculty> Cafedri { get; set; }
         Enum Subjects { get; set; }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new PrepodConfiguration());
-            modelBuilder.ApplyConfiguration(new CafedraConfiguration());
-            modelBuilder.ApplyConfiguration(new DegreeConfiguration());
-            modelBuilder.ApplyConfiguration(new PositionConfiguration());
+            modelBuilder.ApplyConfiguration(new facultyConfiguration());
+            modelBuilder.ApplyConfiguration(new Academic_Academic_degreeConfiguration());
+            modelBuilder.ApplyConfiguration(new ТitleConfiguration());
             modelBuilder.ApplyConfiguration(new ScheduleConfiguration());
             modelBuilder.ApplyConfiguration(new SubjectConfiguration());
 

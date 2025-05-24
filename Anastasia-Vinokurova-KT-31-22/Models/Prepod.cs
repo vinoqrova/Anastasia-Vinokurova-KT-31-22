@@ -12,14 +12,14 @@ namespace Anastasia_Vinokurova_KT_31_22.Models
 
         public string MiddleName { get; set;}
 
-        public int DegreeId { get; set; }
-        public Degree Degree { get; set; }
-        public int PositionId { get; set; }
-        public Position Position { get; set; }
+        public int Academic_degreeId { get; set; }
+        public Academic_Academic_degree Academic_degree { get; set; }
+        public int ТitleId { get; set; }
+        public Тitle Тitle { get; set; }
 
-        public int CafedraId { get; set; }
+        public int facultyId { get; set; }
 
-        public Cafedra Cafedra { get; set; }
+        public faculty faculty { get; set; }
         
     }
 }

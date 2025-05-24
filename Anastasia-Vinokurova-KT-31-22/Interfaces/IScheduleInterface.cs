@@ -43,9 +43,9 @@ namespace Anastasia_Vinokurova_KT_31_22.Interfaces
                 schedule = schedule.Where(p => p.PrepodId == scheduleFilter.PrepodId).ToList();
             }
 
-            if (scheduleFilter.CafedraId != default)
+            if (scheduleFilter.facultyId != default)
             {
-                schedule = schedule.Where(p => p.Prepod.CafedraId == scheduleFilter.CafedraId).ToList();
+                schedule = schedule.Where(p => p.Prepod.facultyId == scheduleFilter.facultyId).ToList();
             }
 
             return Task.FromResult(schedule);

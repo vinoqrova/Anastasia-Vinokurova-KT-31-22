@@ -40,49 +40,49 @@ namespace Anastasia_Vinokurova_KT_31_22.Database.Configurations
                 .HasColumnType(ColumnType.String).HasMaxLength(50)
                 .HasComment("Отчество препода");
 
-            builder.Property(p => p.DegreeId)
-            .HasColumnName("c_degree_id")
+            builder.Property(p => p.Academic_degreeId)
+            .HasColumnName("c_Academic_degree_id")
             .HasColumnType(ColumnType.Int)
             .HasComment("Степень(учёная) преподавателя");
 
-            builder.ToTable(TableName).HasOne(p => p.Degree)
-                .WithMany().HasForeignKey(p => p.DegreeId)
-                .HasConstraintName("fk_degree_id")
+            builder.ToTable(TableName).HasOne(p => p.Academic_degree)
+                .WithMany().HasForeignKey(p => p.Academic_degreeId)
+                .HasConstraintName("fk_Academic_degree_id")
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder.ToTable(TableName)
-                .HasIndex(p => p.DegreeId, $"idx_{TableName}_fk_degree_id");
+                .HasIndex(p => p.Academic_degreeId, $"idx_{TableName}_fk_Academic_degree_id");
 
-            builder.Property(p => p.PositionId)
-                .HasColumnName("c_position_id")
+            builder.Property(p => p.ТitleId)
+                .HasColumnName("c_Тitle_id")
                 .HasColumnType(ColumnType.Int)
                 .HasComment("Должность преподавателя");
 
-            builder.ToTable(TableName).HasOne(p => p.Position)
-                .WithMany().HasForeignKey(p => p.PositionId)
-                .HasConstraintName("fk_position_id")
+            builder.ToTable(TableName).HasOne(p => p.Тitle)
+                .WithMany().HasForeignKey(p => p.ТitleId)
+                .HasConstraintName("fk_Тitle_id")
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder.ToTable(TableName)
-                .HasIndex(p => p.PositionId, $"idx_{TableName}_fk_position_id");
+                .HasIndex(p => p.ТitleId, $"idx_{TableName}_fk_Тitle_id");
 
-            builder.Property(p => p.CafedraId)
+            builder.Property(p => p.facultyId)
                 .IsRequired()
-                .HasColumnName("c_cafedra_id")
+                .HasColumnName("c_faculty_id")
                 .HasColumnType(ColumnType.Int)
                 .HasComment("Айди кафедры");
 
-            builder.ToTable(TableName).HasOne(p => p.Cafedra)
-                .WithMany().HasForeignKey(p => p.CafedraId)
+            builder.ToTable(TableName).HasOne(p => p.faculty)
+                .WithMany().HasForeignKey(p => p.facultyId)
                 .HasConstraintName("fk_f_group_id")
                 .OnDelete(DeleteBehavior.Cascade);
 
             builder.ToTable(TableName)
-                .HasIndex(p => p.CafedraId, $"idx_{TableName}_fk_f_group_id");
+                .HasIndex(p => p.facultyId, $"idx_{TableName}_fk_f_group_id");
 
-            builder.Navigation(p => p.Degree).AutoInclude();
-            builder.Navigation(p => p.Position).AutoInclude();
-            builder.Navigation(p => p.Cafedra).AutoInclude();
+            builder.Navigation(p => p.Academic_degree).AutoInclude();
+            builder.Navigation(p => p.Тitle).AutoInclude();
+            builder.Navigation(p => p.faculty).AutoInclude();
         }
     }
 }

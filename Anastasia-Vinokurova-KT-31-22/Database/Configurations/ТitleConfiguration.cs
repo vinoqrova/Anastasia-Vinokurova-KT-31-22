@@ -5,23 +5,23 @@ using Anastasia_Vinokurova_KT_31_22.Databases.Helpers;
 
 namespace Anastasia_Vinokurova_KT_31_22.Database.Configurations
 {
-    public class PositionConfiguration : IEntityTypeConfiguration<Position>
+    public class ТitleConfiguration : IEntityTypeConfiguration<Тitle>
     {
-        private const string TableName = "Position";
+        private const string TableName = "Тitle";
 
-        public void Configure(EntityTypeBuilder<Position> builder)
+        public void Configure(EntityTypeBuilder<Тitle> builder)
         {
-            builder.HasKey(p => p.PositionId)
-                .HasName($"pk_{TableName}_position_id");
+            builder.HasKey(p => p.ТitleId)
+                .HasName($"pk_{TableName}_Тitle_id");
 
-            builder.Property(p => p.PositionId)
+            builder.Property(p => p.ТitleId)
                 .ValueGeneratedOnAdd()
-                .HasColumnName("position_id")
+                .HasColumnName("Тitle_id")
                 .HasComment("Идентификатор должности");
 
-            builder.Property(p => p.PositionName)
+            builder.Property(p => p.ТitleName)
                 .IsRequired()
-                .HasColumnName("c_position_name")
+                .HasColumnName("c_Тitle_name")
                 .HasColumnType(ColumnType.String).HasMaxLength(100)
                 .HasComment("Название должности (например, доцент)");
         }
